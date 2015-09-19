@@ -19,21 +19,23 @@
 #!/usr/bin/env python
 
 
-# # DESCRIBE TABLE EXAMPLE
+# DESCRIBE TABLE EXAMPLE
 
-# import boto3
+import boto3
 
-# # Remember to set AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY in
-# # the environment before running this program.
+# Remember to set AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY in
+# the environment before running this program.
 
 
-# AWS_REGION = 'us-east-1'
+AWS_REGION = 'us-east-1'
 
-# db = boto3.client('dynamodb',
-#                   region_name = AWS_REGION)
+db = boto3.client('dynamodb',
+                  region_name = AWS_REGION)
                     
-# table = db.describe_table(TableName = '2012')
-# print table['Table']['KeySchema']
+table = db.describe_table(TableName = '2012')
+print "\n"
+print table['Table']['KeySchema']
+print "\n"
 
 # QUERY TABLE EXAMPLE
 
@@ -51,8 +53,7 @@ db = boto3.resource('dynamodb',
                     region_name = AWS_REGION)
                     
 table = db.Table('2012')
-data = table.query(KeyConditionExpression = Key('Ticker').eq('UKRPI Index') & Key('Date').between('2012-01-01', '2012-06-30'))
+data = table.query(KeyConditionExpression = Key('Ticker').eq('CABROVER Index') & Key('Date').between('2012-01-01', '2012-01-30'))
 
 print data['Items']
-
 
