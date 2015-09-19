@@ -53,7 +53,9 @@ db = boto3.resource('dynamodb',
                     region_name = AWS_REGION)
                     
 table = db.Table('2012')
-data = table.query(KeyConditionExpression = Key('Ticker').eq('CABROVER Index') & Key('Date').between('2012-01-01', '2012-01-30'))
+data = table.query(KeyConditionExpression = Key('Ticker').eq('GDP PIQQ Index') & Key('Date').between('2005-01-01', '2014-01-30'))
 
-print data['Items']
+for i in data['Items']:
+	print i['Date']
+	print i['Value']
 
